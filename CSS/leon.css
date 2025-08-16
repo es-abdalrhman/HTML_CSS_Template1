@@ -1,0 +1,558 @@
+/* global rules */
+* {
+    font-family: "Work Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --app-color: #10CAB7;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+/* common components */
+.special-title {
+    color: #EBECED;
+    font-size: 50px;
+    text-align: center;
+}
+
+.special-title+p {
+    color: #777777;
+    font-size: 12px;
+    margin-top: -50px;
+    text-align: center;
+}
+
+/* special heading */
+
+
+/* now no need to scroll in the small screens */
+/* Small */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+/* Medium */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+/* Large */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+/* header styles */
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.logo {
+    width: 60px;
+    height: 24px;
+}
+
+.links {
+    position: relative;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* 3 lines list */
+.links .icon {
+    display: grid;
+    gap: 2px;
+    color: #333333;
+    justify-content: end;
+    position: relative;
+    position: absolute;
+    top: -30px;
+    right: 30px
+}
+
+.links .icon span:first-child,
+.links .icon span:nth-child(3) {
+    display: block;
+    width: 10px;
+    height: 1px;
+    background-color: black;
+}
+
+.links .icon span:nth-child(2) {
+    display: grid;
+    justify-self: end;
+    width: 6px;
+    height: 1px;
+    background-color: black;
+    transition: 0.5s;
+}
+
+/* navigation list */
+.navigation {
+    background-color: #F6F6F6;
+    width: 100px;
+    list-style: none;
+    position: absolute;
+    right: 40px;
+    top: 30px;
+    font-size: small;
+    /* there was left padded by default for the list even I removed the bullets using list-style none */
+    padding: 0;
+    margin: 0;
+    display: none;
+    transition: 0.5s;
+    transition-timing-function: ease;
+    z-index: 2;
+}
+
+.links:hover~.navigation {
+    display: block;
+}
+
+.links:hover span:nth-child(2) {
+    width: 10px;
+}
+
+/* to make the navigation link doesn't disappear when clicking on links*/
+.navigation:hover {
+    display: block;
+}
+
+.navigation li {
+    padding: 5px;
+    border-bottom: rgb(202, 202, 202) 1px solid;
+    font-size: 10px;
+    transition: 0.4s ease;
+}
+
+.navigation li:last-child {
+    border: none;
+}
+
+.navigation li a {
+    text-decoration: none;
+    color: black;
+}
+
+.navigation::before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border: 10px solid;
+    border-color: transparent transparent #F6F6F6 transparent;
+    position: absolute;
+    right: 10px;
+    top: -20px
+}
+
+/* don't but the transition function inside the hover to make the movement smooth */
+.navigation li:hover {
+    padding-left: 10px;
+}
+
+/* end of header */
+
+/* hello section */
+/* landing image */
+.landing {
+    background-image: url("../images/landing.webp");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.hello-landing {
+    color: var(--app-color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    max-width: 100%;
+}
+
+.hello-landing+p {
+    text-align: center;
+    font-size: 9px;
+    margin-top: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    max-width: 100%;
+}
+
+/* icons section */
+
+.icons {
+    position: relative;
+    background-color: #F6F6F6;
+    width: 100%;
+    height: auto;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: grid;
+    font-size: 9px;
+    text-align: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.icons div {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.icons div i {
+    color: var(--app-color);
+    justify-self: center;
+}
+
+.icons div p {
+    color: #777777;
+    width: calc(200px);
+    line-height: 2.6;
+
+}
+
+/* services section */
+.services {
+    display: grid;
+    justify-content: center;
+
+}
+
+.services-block {
+    display: grid;
+    place-items: center;
+}
+
+
+/* services items */
+.services-items {
+    display: grid;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "item1 item2 service-image"
+        "item3 item4 service-image"
+    ;
+    gap: 10px;
+}
+
+.services-items .item-1 {
+    grid-area: item1;
+}
+
+.services-items .item-2 {
+    grid-area: item2;
+}
+
+.services-items .item-3 {
+    grid-area: item3;
+}
+
+.services-items .item-4 {
+    grid-area: item4;
+}
+
+.services-items .item5 {
+    grid-area: service-image;
+}
+
+.services-items>div:not(.item5) {
+    padding: 10px;
+    display: grid;
+    /* width: auto; */
+    grid-template-areas: "icone header4 "
+        "icone parag";
+}
+
+
+.services-items div i {
+    grid-area: icone;
+    color: var(--app-color);
+    /* text-align: center; */
+    margin-top: 0px;
+    position: relative;
+    top: 17px;
+}
+
+.services-items div h4 {
+    grid-area: header4;
+    font-size: 13px;
+}
+
+.services-items div p {
+    grid-area: parag;
+    color: #777777;
+    font-size: 9px;
+}
+
+.service-image {
+    width: 150px;
+    height: 200px;
+    grid-area: service-image;
+    position: relative;
+    top: 50%;
+    left: -50px;
+    transform: translate(-50%, -50%);
+}
+
+/* note the img tag is replacable element and pseudo-elements doens't work with it */
+/* .service-image::after { */
+.item5 {
+    display: block;
+    background-color: #2C4755;
+    width: 50px;
+    height: 250px;
+    position: relative;
+    left: 100%;
+
+}
+
+@media (max-width: 767px) {
+    .services-items {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-areas: "item1"
+            "item2"
+            "item3"
+            "item4";
+    }
+
+    .services-items>div:not(.item5) {
+        padding: 10px;
+        display: grid;
+        /* using grid-area doesn't exist will result in collapse in the grid and make it doesn't work */
+        /* grid-area: services-div; */
+        /* width: auto; */
+        /* need to use template areas to specify the template rows and cols */
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas:
+            "icone"
+            "header4"
+            "parag";
+        justify-items: center;
+    }
+
+    .item5 {
+        display: none;
+    }
+}
+
+/* protofolio */
+
+.protofolio {
+    width: 100%;
+    height: auto;
+    background-color: #F6F6F6;
+    padding: 10px;
+
+}
+
+.carts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 5px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+
+.cart {
+    width: 180px;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.cart>h5,
+.cart>p {
+    padding: 9px;
+    margin: 0;
+}
+
+.cart>p {
+    font-size: 10px;
+    color: #777777;
+    line-height: 1.6;
+
+}
+
+.protofolio-img {
+    width: 180px;
+}
+
+/* about */
+.about {
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-container {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+    justify-items: center;
+}
+
+.img-back::before {
+    content: "";
+    display: block;
+    background-color: #EBECED;
+    width: 80px;
+    height: 250px;
+    position: absolute;
+    z-index: -1;
+    top: 72px;
+    left: 20px;
+}
+
+.l1 {
+    display: block;
+    background-color: #10CAB7;
+    width: 40px;
+    height: 200px;
+    position: absolute;
+    z-index: -1;
+    top: 72px;
+    left: 205px;
+}
+
+.l2 {
+    display: block;
+    background-color: #10CAB7;
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    z-index: -1;
+    top: 232px;
+    left: 205px;
+}
+
+.img-about {
+    width: 150px;
+}
+
+.about-text p {
+    width: 300px;
+    padding: 10px;
+    font-size: 10px;
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+
+    .about-text p {
+        padding: 10px;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .img-back::before {
+        display: none;
+    }
+
+    .l1 {
+        display: none;
+    }
+
+    .l2 {
+        display: none;
+    }
+
+    .img-about {
+        display: grid;
+        justify-self: center;
+    }
+}
+
+.about-text p:first-child::after {
+    content: "";
+    display: block;
+    background-color: var(--app-color);
+    width: 200px;
+    height: 1px;
+    margin-top: 30px;
+    transform: translate(30px);
+}
+/* contact */
+.contact{
+    background-color:#F6F6F6;
+    display: grid;
+    justify-items: center;
+    padding: 20px;
+}
+.feel-free{
+    color: #2C4755;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+.mail{
+    text-decoration: none;
+    color: #10CAB7;
+    font-weight: 800;
+}
+.find-us{
+    font-size: 9px;
+}
+.last-element > p{
+    display: inline;
+    margin-bottom: 10px;
+}
+.contact > i{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+.fa-brands{
+    font-size: 8px;
+}
+
+/* footer */
+footer {
+    background-color: #2C4755;
+    width: 100%;
+    height: 40px;
+    color: white;
+    text-align: center;
+    font-size: 9px;
+    display: grid;
+}
+
+.Leon {
+    color: var(--app-color);
+    font-weight: bold;
+
+}
